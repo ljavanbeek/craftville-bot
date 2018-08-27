@@ -53,15 +53,11 @@ client.on("message", async message => {
   if (message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  if (command === "help") {
-    const embed = new Discord.RichEmbed().addField('Commands', '-server  |  Voor alle server info\n-verzoekidee  | Om een idee voor de **bot** achter te laten!\nSoon meer commands').setColor(0x6fa5fc);
-    message.channel.send({embed: embed});
-  }
   if (command === "server") {
     pinger.ping('play.craftville.nl', 25872, (error, result) => {
       if (error) return console.error(error)
       onlineSpelers();
-      const embed = new Discord.RichEmbed().addField('IP', 'play.craftville.nl', !0).addField('Versie', '1.9 t/m 1.12.2', !0).addField('Online spelers', `${result.players.online} spelers`, !0).setTitle('Craftville Server').setColor(0x6fa5fc).setFooter('Copyright © ClassicGamerNL').setTimestamp();
+      const embed = new Discord.RichEmbed().addField('IP', 'play.craftville.nl', !0).addField('Versie', '1.9 t/m 1.12.2', !0).addField('Online spelers', `${result.players.online} spelers`, !0).setTitle('Craftville Server').setColor(0x6fa5fc).setFooter('Copyright © 2018 Lucas van Beek').setTimestamp();
       message.channel.send({embed:embed});
     })
   }
